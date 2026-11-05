@@ -1,0 +1,56 @@
+[
+  {
+    "id": 4,
+    "slug": "minoxidil",
+    "name": "Minoxidil para Barba y Cabello",
+    "shortName": "Minoxidil",
+    "parent": "",
+    "description": "Guías clínicas y prácticas sobre Minoxidil al 5% para barba y cabello: comparativas de Minoxidil en Crema You Minox vs. formato líquido o espuma, tiempos de resultados mes a mes, aplicación correcta y prevención de efectos secundarios.",
+    "count": 287
+  },
+  {
+    "id": 5,
+    "slug": "alopecia",
+    "name": "Alopecia y Regeneración Capilar",
+    "shortName": "Alopecia",
+    "parent": "",
+    "description": "Enciclopedia médica y práctica sobre alopecia androgenética, alopecia areata en la barba, entradas, coronilla, efluvio telógeno y tratamientos regenerativos capilares para hombres y mujeres.",
+    "count": 300
+  },
+  {
+    "id": 6,
+    "slug": "biotina",
+    "name": "Biotina y Vitaminas Capilares",
+    "shortName": "Biotina",
+    "parent": "",
+    "description": "Todo sobre la Biotina (Vitamina B7) para acelerar el crecimiento de la barba y fortalecer el cabello: dosis diaria recomendada en mcg, mejores suplementos, alimentos ricos en biotina y sinergia con Minoxidil You Minox.",
+    "count": 226
+  },
+  {
+    "id": 7,
+    "slug": "finasteride",
+    "name": "Finasteride y Bloqueadores DHT",
+    "shortName": "Finasteride",
+    "parent": "",
+    "description": "Análisis dermatológico del Finasteride oral y tópico para frenar la hormona DHT en la alopecia androgenética: resultados reales, combinación con Minoxidil al 5%, dosis y precauciones.",
+    "count": 72
+  },
+  {
+    "id": 8,
+    "slug": "estilo",
+    "name": "Estilos y Genética de Barba",
+    "shortName": "Estilo",
+    "parent": "",
+    "description": "Diseño, perfilado y genética de la barba: qué estilo de barba favorece según tu tipo de rostro, cómo poblar zonas con huecos o parches, tiempos de crecimiento y tendencias masculinas.",
+    "count": 43
+  },
+  {
+    "id": 3,
+    "slug": "consejos",
+    "name": "Cuidado Diario y Consejos de Barba",
+    "shortName": "Consejos",
+    "parent": "",
+    "description": "Rutinas diarias de cuidado de la barba y piel facial: cómo hidratar el vello facial, evitar granos, caspa o resequedad, elegir cepillos, aceites naturales, bálsamos y técnicas de afeitado.",
+    "count": 30
+  }
+]
