@@ -90,6 +90,8 @@ export function getPostsByCategory(categorySlug: string): Post[] {
 }
 
 const PRIORITY_YOU_MINOX_SLUGS = [
+  "ranking-marcas-minoxidil-peru-vs-estados-unidos-cual-elegir",
+  "por-que-el-minoxidil-liquido-da-caspa-en-la-barba-y-como-evitarlo",
   "you-minox-opiniones-vale-la-pena-la-compra-guia-completa",
   "minoxidil-kirkland-vs-minoxidil-you-minox-comparativa-resultados-reales",
   "minoxidil-en-crema-como-aplicar-correctamente",
@@ -98,8 +100,6 @@ const PRIORITY_YOU_MINOX_SLUGS = [
   "minoxidil-kirkland-vs-minoxidil-you-minox-comparativa-pros-y-contras",
   "you-minox-opiniones-vale-la-pena-la-compra-precios",
   "you-minox-opiniones-vale-la-pena-la-compra-consejos-de-uso",
-  "minoxidil-kirkland-vs-minoxidil-you-minox-comparativa-guia-completa",
-  "you-minox-opiniones-vale-la-pena-la-compra-beneficios",
 ];
 
 export function getYouMinoxFeaturedPosts(limit = 6): Post[] {
@@ -123,6 +123,9 @@ export function getYouMinoxFeaturedPosts(limit = 6): Post[] {
 }
 
 const PRIORITY_BEARD_GUIDES_SLUGS = [
+  "como-perfilar-barba-en-barberia-durante-tratamiento-minoxidil",
+  "mejores-estilos-de-barba-segun-tu-rostro-donde-perfilarla",
+  "como-combinar-corte-estrategico-y-minoxidil-para-entradas",
   "minoxidil-para-barba-resultados-en-cuanto-tiempo-opiniones",
   "como-aplicar-minoxidil-para-evitar-irritacion",
   "por-que-el-minoxidil-me-saca-granos",
@@ -132,9 +135,6 @@ const PRIORITY_BEARD_GUIDES_SLUGS = [
   "como-lograr-una-barba-perfecta",
   "cuantos-tipos-de-barba-hay",
   "quien-hereda-la-barba",
-  "guia-para-peinar-tu-barba-todos-los-dias",
-  "productos-naturales-para-el-cuidado-de-la-barba",
-  "como-estimular-el-crecimiento-de-la-barba-con-biotina",
 ];
 
 export function getBeardAndCareGuides(limit = 6): Post[] {
