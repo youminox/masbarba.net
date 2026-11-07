@@ -491,12 +491,20 @@ export default async function ArticlePage({ params }: { params: Params }) {
                     >
                       Charlie Lingán
                     </Link>
+                    <a
+                      href="https://charlielingan.com/es"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs font-extrabold text-primary hover:underline"
+                    >
+                      (charlielingan.com ↗)
+                    </a>
                     <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-primary-dark">
                       Fundador de You Minox & MásBarba.net
                     </span>
                   </div>
                   <p className="mt-1.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                    Creador de{" "}
+                    Creador y fundador de{" "}
                     <a
                       href={YOU_MINOX_URL}
                       target="_blank"
@@ -506,10 +514,16 @@ export default async function ArticlePage({ params }: { params: Params }) {
                       You Minox (youminox.com)
                     </a>
                     , la marca líder de Minoxidil en crema-gel con más de
-                    600,000 seguidores en redes sociales. En{" "}
-                    <strong>MásBarba.net</strong> compartimos guías verificadas
-                    y experiencias reales para ayudarte a conseguir una barba
-                    poblada y un cabello saludable.
+                    600,000 seguidores en redes sociales. Conoce su historia y casos de estudio como fundador en{" "}
+                    <a
+                      href="https://charlielingan.com/es/emprendedor/como-cree-you-minox-minoxidil-en-crema-numero-1-del-peru"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-bold text-gray-900 underline hover:text-primary"
+                    >
+                      CharlieLingán.com ↗
+                    </a>
+                    .
                   </p>
                 </div>
               </div>

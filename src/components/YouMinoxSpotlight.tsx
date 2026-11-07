@@ -280,10 +280,25 @@ export default function YouMinoxSpotlight({
                     Mensaje del Fundador
                   </span>
                   <h3 className="text-xl font-extrabold text-white">
-                    Charlie Lingán
+                    <a
+                      href="https://charlielingan.com/es"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-emerald-300 underline decoration-emerald-400/50"
+                    >
+                      Charlie Lingán ↗
+                    </a>
                   </h3>
                   <p className="text-xs text-slate-400">
-                    Fundador de You Minox (youminox.com) & MásBarba.net
+                    Fundador de You Minox (youminox.com) &amp; MásBarba.net •{" "}
+                    <a
+                      href="https://charlielingan.com/es/emprendedor/como-cree-you-minox-minoxidil-en-crema-numero-1-del-peru"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-400 hover:underline"
+                    >
+                      Conoce al fundador
+                    </a>
                   </p>
                 </div>
               </div>
