@@ -5,6 +5,7 @@ import {
   MASBARBA_500_SEEDS,
   type MasBarbaSeed,
 } from "@/data/masbarba-seeds";
+import { MASBARBA_PHASE2_SEEDS } from "@/data/masbarba-seeds-phase2";
 import {
   getBarberiasByLocation,
   type PeruBarberiaSummary,
@@ -14,7 +15,7 @@ export const SITE_NAME = "MásBarba.net";
 export const SITE_URL = "https://masbarba.net";
 export const YOU_MINOX_URL = "https://youminox.com/";
 export const SITE_DESCRIPTION =
-  "Portal líder en español con más de 1,460 guías sobre crecimiento de barba, Minoxidil al 5% en crema-gel You Minox, visagismo en barberías, biotina, finasteride y regeneración capilar. Creado e impulsado por You Minox (youminox.com) y Charlie Lingán.";
+  "Portal líder en español con más de 2,460 guías sobre crecimiento de barba, Minoxidil al 5% en crema-gel You Minox, visagismo en barberías, biotina, finasteride y regeneración capilar. Creado e impulsado por You Minox (youminox.com) y Charlie Lingán.";
 export const ADSENSE_CLIENT = "ca-pub-1070738569472471";
 export const GA_ID = "G-WR272JSC0X";
 
@@ -324,9 +325,10 @@ ${geoSectionHtml}
   };
 }
 
-const generated500Posts: Post[] = MASBARBA_500_SEEDS.map(
-  buildMasBarbaGeneratedPost
-);
+const generated500Posts: Post[] = [
+  ...MASBARBA_500_SEEDS,
+  ...MASBARBA_PHASE2_SEEDS,
+].map(buildMasBarbaGeneratedPost);
 const legacyPosts: Post[] = postsData as Post[];
 const posts: Post[] = [...generated500Posts, ...legacyPosts];
 const pages: Post[] = pagesData as Post[];

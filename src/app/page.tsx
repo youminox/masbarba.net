@@ -34,7 +34,7 @@ const PILLAR_HUBS = [
     tag: "Estímulo Folicular 5%",
     title: "Minoxidil para Barba y Cabello",
     desc: "Guías clínicas sobre Minoxidil en Crema-Gel You Minox vs. formato líquido o espuma, tiempos de resultados mes a mes, dermaroller y aplicación sin irritación.",
-    badge: "287 guías",
+    badge: "1,161 guías",
     accent: "from-slate-900 to-emerald-950",
   },
   {
@@ -42,7 +42,7 @@ const PILLAR_HUBS = [
     tag: "Regeneración Capilar",
     title: "Alopecia en Hombres, Mujeres y Barba",
     desc: "Causas y tratamientos efectivos para la alopecia androgenética, alopecia areata en la barba, entradas, coronilla, efluvio telógeno y salud del folículo piloso.",
-    badge: "300 guías",
+    badge: "440 guías",
     accent: "from-emerald-950 to-slate-900",
   },
   {
@@ -50,7 +50,7 @@ const PILLAR_HUBS = [
     tag: "Nutrición & Queratina",
     title: "Biotina y Vitaminas para el Cabello",
     desc: "Dosis diaria recomendada de Biotina (Vitamina B7) según expertos, mejores suplementos, fuentes naturales y cómo combinarla con Minoxidil para acelerar resultados.",
-    badge: "226 guías",
+    badge: "318 guías",
     accent: "from-slate-950 to-slate-900",
   },
   {
@@ -66,7 +66,7 @@ const PILLAR_HUBS = [
     tag: "Diseño & Genética",
     title: "Estilos y Genética de la Barba",
     desc: "Descubre los tipos de barba según la forma de tu rostro, cómo influye la genética y las mejores técnicas para poblar y perfilar una barba densa y varonil.",
-    badge: "43 guías",
+    badge: "245 guías",
     accent: "from-teal-950 to-slate-950",
   },
   {
@@ -74,7 +74,7 @@ const PILLAR_HUBS = [
     tag: "Cuidado Facial Diario",
     title: "Consejos y Rutinas para tu Barba",
     desc: "Cómo evitar granos, caspa o resequedad al usar minoxidil, qué aceites naturales y cepillos usar, y cómo mantener tu barba limpia, suave y bien peinada cada día.",
-    badge: "30 guías",
+    badge: "227 guías",
     accent: "from-slate-900 to-slate-800",
   },
 ];
@@ -171,7 +171,7 @@ export default function HomePage() {
 
             <p className="mx-auto mt-5 max-w-3xl text-base sm:text-lg text-slate-200 leading-relaxed">
               Explora más de{" "}
-              <strong className="text-white">958 guías verificadas</strong>{" "}
+              <strong className="text-white">2,460 guías verificadas</strong>{" "}
               sobre crecimiento de barba desde cero,{" "}
               <a
                 href={YOU_MINOX_URL}
@@ -196,19 +196,19 @@ export default function HomePage() {
                 href="/minoxidil/"
                 className="rounded-full bg-emerald-400 px-4 py-2 text-xs font-extrabold text-slate-950 hover:bg-emerald-300 transition shadow-md"
               >
-                💧 Minoxidil & You Minox (287)
+                💧 Minoxidil & You Minox (1,161)
               </Link>
               <Link
                 href="/alopecia/"
                 className="rounded-full bg-amber-400 px-4 py-2 text-xs font-extrabold text-slate-950 hover:bg-amber-300 transition shadow-md"
               >
-                💇‍♂️ Alopecia y Caída Capilar (300)
+                💇‍♂️ Alopecia y Caída Capilar (440)
               </Link>
               <Link
                 href="/biotina/"
                 className="rounded-full bg-white/10 hover:bg-white/20 px-4 py-2 text-xs font-bold text-white transition"
               >
-                💊 Biotina y Vitaminas (226)
+                💊 Biotina y Vitaminas (318)
               </Link>
               <Link
                 href="/finasteride/"
@@ -220,13 +220,13 @@ export default function HomePage() {
                 href="/estilo/"
                 className="rounded-full bg-white/10 hover:bg-white/20 px-4 py-2 text-xs font-bold text-white transition"
               >
-                🧔 Estilos y Tipos de Barba (43)
+                🧔 Estilos y Tipos de Barba (245)
               </Link>
               <Link
                 href="/consejos/"
                 className="rounded-full bg-white/10 hover:bg-white/20 px-4 py-2 text-xs font-bold text-white transition"
               >
-                🛡️ Consejos y Cuidado Diario (30)
+                🛡️ Consejos y Cuidado Diario (227)
               </Link>
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
             <div className="rounded-2xl bg-slate-50 p-4 border border-slate-100">
               <div className="text-2xl sm:text-3xl font-extrabold text-primary">
-                958+
+                2,460+
               </div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mt-0.5">
                 Guías Clínicas y Prácticas
