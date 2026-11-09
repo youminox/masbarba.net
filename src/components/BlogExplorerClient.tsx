@@ -43,7 +43,7 @@ export default function BlogExplorerClient({
               : "bg-slate-100 text-slate-700 hover:bg-slate-200"
           }`}
         >
-          Todas las Especialidades (958)
+          Todas las Especialidades ({categories.reduce((acc, c) => acc + c.count, 0)})
         </button>
         {categories.map((cat) => (
           <button
@@ -82,6 +82,11 @@ export default function BlogExplorerClient({
               <span className="absolute top-3 left-3 rounded-full bg-slate-900/90 px-3 py-1 text-[10px] font-bold text-emerald-300">
                 {post.categoryName}
               </span>
+              {post.badgeLabel && (
+                <span className="absolute bottom-2.5 left-2.5 rounded-lg bg-slate-950/85 px-2.5 py-0.5 text-[10px] font-extrabold text-amber-300">
+                  {post.badgeLabel}
+                </span>
+              )}
             </div>
             <div className="flex flex-1 flex-col p-5">
               <div className="mb-1.5 flex items-center gap-2 text-xs text-slate-400">

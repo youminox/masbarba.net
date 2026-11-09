@@ -21,6 +21,7 @@ import {
   SITE_NAME,
   SITE_URL,
   YOU_MINOX_URL,
+  type Post,
 } from "@/lib/data";
 
 type Params = Promise<{ category: string; slug: string }>;
@@ -146,6 +147,418 @@ function extractFaqPairs(
     }
   }
   return faqs;
+}
+
+function VariantTopModule({ post }: { post: Post }) {
+  if (!post.layoutVariant) return null;
+
+  switch (post.layoutVariant) {
+    case "geoperu": {
+      const geo = post.geoPeruInfo;
+      return (
+        <div className="mt-8 space-y-6">
+          <div className="rounded-2xl border-2 border-emerald-500/30 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 p-6 text-white shadow-md">
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/20 border border-emerald-400/40 px-3 py-1 text-xs font-extrabold text-emerald-300">
+                📍 Guía Geolocalizada en {geo?.locationName || "Perú"}
+              </span>
+              <span className="text-xs font-bold text-amber-300">
+                🇵🇪 Cobertura: MásBarba.net + YouMinox.com + GuíaDeBarberías.com
+              </span>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded-xl bg-white/5 p-3.5 border border-white/10">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block">
+                  Zona / Región
+                </span>
+                <p className="mt-1 text-sm font-extrabold text-white">
+                  {geo?.locationName}
+                </p>
+                <p className="text-xs text-slate-300 mt-0.5">
+                  {geo?.regionLabel}
+                </p>
+              </div>
+              <div className="rounded-xl bg-white/5 p-3.5 border border-white/10">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block">
+                  Factor Climático Local
+                </span>
+                <p className="mt-1 text-xs font-semibold text-slate-200 leading-relaxed">
+                  {geo?.climateNote}
+                </p>
+              </div>
+              <div className="rounded-xl bg-white/5 p-3.5 border border-white/10">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block">
+                  Ejes Comerciales
+                </span>
+                <p className="mt-1 text-xs font-semibold text-slate-200 leading-relaxed">
+                  {geo?.avenuesNote}
+                </p>
+              </div>
+              <div className="rounded-xl bg-emerald-500/15 p-3.5 border border-emerald-400/30">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-300 block">
+                  #1 Recomendado en {geo?.locationName}
+                </span>
+                <p className="mt-1 text-xs font-extrabold text-white">
+                  You Minox Crema-Gel 60g (DIGEMID)
+                </p>
+                <p className="text-[11px] text-emerald-200 mt-0.5">
+                  {geo?.deliveryTime}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {post.localBarberias && post.localBarberias.length > 0 && (
+            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <div>
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-primary block">
+                    💈 Directorio Verificado por GuíaDeBarberías.com
+                  </span>
+                  <h2 className="text-lg font-extrabold text-slate-900">
+                    Top Barberías para Perfilar tu Barba en{" "}
+                    {geo?.locationName || "Perú"}
+                  </h2>
+                </div>
+                <a
+                  href="https://guiadebarberias.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-xl bg-slate-900 px-3.5 py-2 text-xs font-extrabold text-white hover:bg-primary transition"
+                >
+                  Ver Ranking en GuíaDeBarberías.com ↗
+                </a>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {post.localBarberias.map((b) => (
+                  <a
+                    key={b.id}
+                    href={`https://guiadebarberias.com/barberia/${b.slug}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group rounded-xl border border-slate-200 bg-white p-4 shadow-2xs transition hover:border-primary hover:shadow-md flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-[11px] font-extrabold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full">
+                          {b.badge}
+                        </span>
+                        <span className="rounded-md bg-amber-100 px-2 py-0.5 text-xs font-black text-amber-900">
+                          ★ {b.rating.toFixed(1)} ({b.reviewCount})
+                        </span>
+                      </div>
+                      <h3 className="mt-2 text-sm font-extrabold text-slate-900 group-hover:text-primary">
+                        {b.name}
+                      </h3>
+                      <p className="text-xs text-slate-500 mt-0.5">
+                        📍 {b.address}
+                      </p>
+                      <p className="text-[11px] font-semibold text-slate-700 mt-2">
+                        ✂️ {b.styleTag}
+                      </p>
+                    </div>
+                    <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-slate-600">
+                      <span>
+                        Corte: {b.cutPrice} · Barba: {b.beardPrice}
+                      </span>
+                      <span className="text-primary font-extrabold group-hover:underline">
+                        Ver ficha ↗
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    case "geomundo": {
+      const world = post.geoMundoInfo;
+      return (
+        <div className="mt-8 rounded-2xl border-2 border-blue-500/25 bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950 p-6 text-white shadow-md">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10">
+            <div className="flex items-center gap-3">
+              <span className="text-4xl">{world?.flag || "🌎"}</span>
+              <div>
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400 block">
+                  Observatorio Internacional de Minoxidil y Barbería
+                </span>
+                <h2 className="text-lg font-extrabold text-white">
+                  Mercado Analizado: {world?.locationName}
+                </h2>
+              </div>
+            </div>
+            <span className="rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold text-amber-300">
+              Regulador Oficial: {world?.regulator}
+            </span>
+          </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-xl bg-white/5 p-3.5 border border-white/10">
+              <span className="text-[11px] font-bold uppercase text-blue-300 block">
+                Marcas Locales Comercializadas
+              </span>
+              <p className="mt-1 text-xs font-bold text-white leading-relaxed">
+                {world?.localBrands}
+              </p>
+            </div>
+            <div className="rounded-xl bg-white/5 p-3.5 border border-white/10">
+              <span className="text-[11px] font-bold uppercase text-blue-300 block">
+                Moneda y Entorno Regulatorio
+              </span>
+              <p className="mt-1 text-xs font-bold text-white">
+                {world?.currency} · Normativa {world?.regulator}
+              </p>
+            </div>
+            <div className="rounded-xl bg-emerald-500/20 p-3.5 border border-emerald-400/40">
+              <span className="text-[11px] font-bold uppercase text-emerald-300 block">
+                Referente en Formato Crema-Gel (Perú 🇵🇪)
+              </span>
+              <p className="mt-1 text-xs font-extrabold text-white">
+                #1 You Minox Crema 60g (9.9/10)
+              </p>
+              <a
+                href={YOU_MINOX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-bold text-emerald-300 underline mt-0.5 inline-block"
+              >
+                Conocer fórmula en YouMinox.com ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    case "comparativa": {
+      return (
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-xs">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-primary">
+              🏆 Evaluación Clínica de Fórmulas • MásBarba.net
+            </span>
+            <span className="text-xs font-bold text-slate-500">
+              Puntaje de Eficacia y Tolerancia Dérmica
+            </span>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border-2 border-emerald-500 bg-emerald-50/70 p-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-extrabold uppercase text-emerald-900">
+                  🥇 #1 Ganador en Perú 🇵🇪
+                </span>
+                <span className="rounded-lg bg-emerald-700 px-2.5 py-1 text-xs font-black text-white">
+                  9.9 / 10
+                </span>
+              </div>
+              <h3 className="mt-2 text-base font-extrabold text-slate-900">
+                You Minox al 5% en Crema-Gel (60 g)
+              </h3>
+              <ul className="mt-2.5 space-y-1.5 text-xs text-emerald-950 font-medium">
+                <li>✓ Base dermo-hidratante con Oxothiazolidinecarboxylate</li>
+                <li>✓ Cero caspa, cero ardor y precisión en barba, cabello y cejas</li>
+                <li>✓ Notificación Sanitaria DIGEMID (MINOXIDIL PERU S.A.C.)</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-4">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-extrabold uppercase text-slate-600">
+                  🥈 #2 Alternativa Importada 🇺🇸
+                </span>
+                <span className="rounded-lg bg-slate-800 px-2.5 py-1 text-xs font-black text-white">
+                  8.5 / 10
+                </span>
+              </div>
+              <h3 className="mt-2 text-base font-extrabold text-slate-900">
+                Kirkland Signature / Goteros Líquidos
+              </h3>
+              <ul className="mt-2.5 space-y-1.5 text-xs text-slate-600 font-medium">
+                <li>• Efectivo pero contiene alto propilenglicol y alcohol</li>
+                <li>• Provoca resequedad y descamación blanca en mejillas</li>
+                <li>• Se escurre con facilidad y tarda 60 min en secar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    case "timeline": {
+      const stages = [
+        {
+          step: "Etapa 1 (Mes 1–2)",
+          title: "Despertar Folicular",
+          pct: "25%",
+          desc: "Vasodilatación periférica y brote de los primeros vellos vellosos finos sin irritar la piel.",
+        },
+        {
+          step: "Etapa 2 (Mes 3)",
+          title: "Engrosamiento y Color",
+          pct: "55%",
+          desc: "Síntesis activa de queratina; los vellos ganan pigmento oscuro y cierran claros en mejillas.",
+        },
+        {
+          step: "Etapa 3 (Mes 4–5)",
+          title: "Conexión de Barba",
+          pct: "85%",
+          desc: "Unión de bigote, candado y patillas con recambio hacia fibras terminales resistentes.",
+        },
+        {
+          step: "Etapa 4 (Mes 6+)",
+          title: "Consolidación Terminal",
+          pct: "100%",
+          desc: "Raíz profunda y definitiva lista para perfilado profesional en barbería.",
+        },
+      ];
+      return (
+        <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50/40 p-6">
+          <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <h2 className="text-sm font-extrabold uppercase tracking-wider text-emerald-950 flex items-center gap-2">
+              <span>⏱️</span> Cronología Clínica de Evolución Folicular (Mes 1 a Mes 6)
+            </h2>
+            <span className="text-xs font-bold text-primary">
+              Constancia recomendada: 2 veces al día
+            </span>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {stages.map((s) => (
+              <div
+                key={s.step}
+                className="rounded-xl border border-emerald-200/80 bg-white p-3.5 shadow-2xs"
+              >
+                <div className="flex items-center justify-between text-[11px] font-extrabold text-primary">
+                  <span>{s.step}</span>
+                  <span>{s.pct}</span>
+                </div>
+                <div className="mt-1.5 h-1.5 w-full rounded-full bg-emerald-100 overflow-hidden">
+                  <div
+                    className="h-full bg-primary rounded-full"
+                    style={{ width: s.pct }}
+                  />
+                </div>
+                <h3 className="mt-2 text-xs font-extrabold text-slate-900">
+                  {s.title}
+                </h3>
+                <p className="mt-1 text-[11px] text-slate-600 leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    case "barberia": {
+      const faces = [
+        {
+          shape: "Rostro Redondo",
+          tip: "Perfila pómulos en diagonal y deja mayor longitud en el mentón para estilizar y alargar el rostro.",
+        },
+        {
+          shape: "Rostro Cuadrado",
+          tip: "Suaviza los ángulos mandibulares con un degradado lateral (Beard Fade) y contornos limpios.",
+        },
+        {
+          shape: "Rostro Ovalado",
+          tip: "Proporción equilibrada que admite barba corporativa cerrada, estilo leñador o barba de 3 días.",
+        },
+        {
+          shape: "Rostro Alargado",
+          tip: "Mantén mayor densidad en patillas y mejillas con You Minox y recorta la base del mentón.",
+        },
+      ];
+      return (
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-900 p-6 text-white shadow-md">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-white/10">
+            <div>
+              <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 block">
+                ✂️ Manual de Visagismo & Barbería Profesional
+              </span>
+              <h2 className="text-base sm:text-lg font-extrabold text-white">
+                Geometría Facial y Diseño de Barba según tu Rostro
+              </h2>
+            </div>
+            <a
+              href="https://guiadebarberias.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl bg-emerald-500 px-3.5 py-1.5 text-xs font-extrabold text-slate-950 hover:bg-emerald-400 transition"
+            >
+              Directorio GuíaDeBarberías.com ↗
+            </a>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {faces.map((f) => (
+              <div
+                key={f.shape}
+                className="rounded-xl bg-white/5 border border-white/10 p-3.5"
+              >
+                <h3 className="text-xs font-extrabold text-emerald-300">
+                  🧔 {f.shape}
+                </h3>
+                <p className="mt-1.5 text-[11px] text-slate-300 leading-relaxed">
+                  {f.tip}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    default: {
+      return (
+        <div className="mt-8 rounded-2xl border border-teal-200 bg-gradient-to-br from-teal-50/70 via-white to-emerald-50/50 p-6 shadow-xs">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-teal-200/70">
+            <span className="text-xs font-extrabold uppercase tracking-wider text-teal-900">
+              🔬 Ficha Dermo-Científica y Biotipo Folicular
+            </span>
+            <span className="rounded-full bg-teal-900 px-3 py-0.5 text-[11px] font-bold text-teal-100">
+              Revisión Farmacéutica • DIGEMID Perú
+            </span>
+          </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-xl bg-white p-3.5 border border-teal-100">
+              <span className="text-[11px] font-bold uppercase text-teal-700 block">
+                Sinergia Molecular Activa
+              </span>
+              <p className="mt-1 text-xs font-extrabold text-slate-900">
+                Minoxidil 5% + Oxothiazolidinecarboxylate
+              </p>
+              <p className="mt-0.5 text-[11px] text-slate-600">
+                Apertura de canales de potasio y protección antioxidante del bulbo.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white p-3.5 border border-teal-100">
+              <span className="text-[11px] font-bold uppercase text-teal-700 block">
+                Vehículo Dermo-Compatible
+              </span>
+              <p className="mt-1 text-xs font-extrabold text-slate-900">
+                Emulsión en Crema-Gel 60 g (Cero Goteo)
+              </p>
+              <p className="mt-0.5 text-[11px] text-slate-600">
+                Evita la dermatitis de contacto inducida por propilenglicol líquido.
+              </p>
+            </div>
+            <div className="rounded-xl bg-white p-3.5 border border-teal-100">
+              <span className="text-[11px] font-bold uppercase text-teal-700 block">
+                Seguridad Oftálmica y Facial
+              </span>
+              <p className="mt-1 text-xs font-extrabold text-slate-900">
+                Fijación Localizada en Barba, Entradas y Cejas
+              </p>
+              <p className="mt-0.5 text-[11px] text-slate-600">
+                No se licúa con el calor corporal ni migra hacia los párpados.
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
 }
 
 export default async function ArticlePage({ params }: { params: Params }) {
@@ -315,6 +728,9 @@ export default async function ArticlePage({ params }: { params: Params }) {
                   />
                 </div>
               )}
+
+              {/* 6 Dynamic Layout Top Module (Designs A–F) */}
+              <VariantTopModule post={post} />
 
               {/* Above-the-fold AdSense Banner */}
               <AdBanner className="my-8" />
