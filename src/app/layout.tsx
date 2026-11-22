@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import MasBarbaChatWidget from "@/components/MasBarbaChatWidget";
 import {
   SITE_NAME,
   SITE_URL,
@@ -13,6 +14,12 @@ import {
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -101,7 +108,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es" className={`${inter.variable} ${outfit.variable}`}>
       <head>
         {/* Google AdSense Verification & Script */}
         <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
@@ -132,6 +139,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
         {children}
+        <MasBarbaChatWidget />
       </body>
     </html>
   );

@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AdBanner from "@/components/AdBanner";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getContextualAmazonProducts } from "@/lib/amazon";
 import {
   getAllCategories,
   getCategoryBySlug,
@@ -60,6 +62,11 @@ export default async function CategoryPage({ params }: { params: Params }) {
 
   const posts = getPostsByCategory(slug);
   const allCategories = getAllCategories();
+  const amazonContext = getContextualAmazonProducts(
+    cat.slug,
+    cat.slug,
+    cat.name
+  );
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -178,6 +185,13 @@ export default async function CategoryPage({ params }: { params: Params }) {
               </Link>
             ))}
           </div>
+
+          <AmazonAffiliateBox
+            variant="showcase"
+            sectionTitle={amazonContext.sectionTitle}
+            sectionSubtitle={amazonContext.sectionSubtitle}
+            products={amazonContext.products}
+          />
 
           <AdBanner className="mt-12" />
         </div>

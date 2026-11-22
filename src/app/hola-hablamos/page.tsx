@@ -3,6 +3,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getContextualAmazonProducts } from "@/lib/amazon";
 import { getPageBySlug, SITE_NAME, SITE_URL, YOU_MINOX_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -14,6 +16,11 @@ export const metadata: Metadata = {
 
 export default function HolaHablamosPage() {
   const page = getPageBySlug("hola-hablamos");
+  const amazonContext = getContextualAmazonProducts(
+    "hola-hablamos",
+    "minoxidil",
+    "Esenciales recomendados por Charlie Lingán para barba y cabello"
+  );
 
   const personSchema = {
     "@context": "https://schema.org",
@@ -106,6 +113,13 @@ export default function HolaHablamosPage() {
               dangerouslySetInnerHTML={{ __html: page.content }}
             />
           )}
+
+          <AmazonAffiliateBox
+            variant="showcase"
+            sectionTitle={amazonContext.sectionTitle}
+            sectionSubtitle={amazonContext.sectionSubtitle}
+            products={amazonContext.products}
+          />
         </div>
       </main>
 

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getContextualAmazonProducts } from "@/lib/amazon";
 import { getPageBySlug, SITE_NAME, SITE_URL } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -12,6 +14,11 @@ export const metadata: Metadata = {
 
 export default function PoliticaPrivacidadPage() {
   const page = getPageBySlug("politica-de-privacidad");
+  const amazonContext = getContextualAmazonProducts(
+    "politica-de-privacidad",
+    "consejos",
+    "Cuidado facial e hidratación para barba"
+  );
 
   return (
     <>
@@ -33,6 +40,12 @@ export default function PoliticaPrivacidadPage() {
               dangerouslySetInnerHTML={{ __html: page.content }}
             />
           )}
+          <AmazonAffiliateBox
+            variant="showcase"
+            sectionTitle={amazonContext.sectionTitle}
+            sectionSubtitle={amazonContext.sectionSubtitle}
+            products={amazonContext.products}
+          />
         </div>
       </main>
       <Footer />

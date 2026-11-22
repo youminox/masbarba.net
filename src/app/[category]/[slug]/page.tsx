@@ -6,6 +6,8 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AdBanner from "@/components/AdBanner";
 import YouMinoxSpotlight from "@/components/YouMinoxSpotlight";
+import AmazonAffiliateBox from "@/components/AmazonAffiliateBox";
+import { getContextualAmazonProducts } from "@/lib/amazon";
 import {
   getAllPosts,
   getPostBySlug,
@@ -585,6 +587,11 @@ export default async function ArticlePage({ params }: { params: Params }) {
   );
   const beardGuides = getBeardAndCareGuides(5).filter((p) => p.id !== post.id);
   const topSeoPosts = getTopSeoPosts(8).filter((p) => p.id !== post.id);
+  const amazonContext = getContextualAmazonProducts(
+    post.slug,
+    post.category,
+    post.title
+  );
 
   const { enhancedHtml, toc } = addHeadingIdsAndExtractToc(post.content);
   const [firstHalfContent, secondHalfContent] =
@@ -798,6 +805,14 @@ export default async function ArticlePage({ params }: { params: Params }) {
                   {/* In-Article You Minox Protagonist Card */}
                   <YouMinoxSpotlight variant="article" />
 
+                  {/* Mid-Article Amazon Affiliate Card (High Mobile CTR) */}
+                  <AmazonAffiliateBox
+                    variant="inline"
+                    sectionTitle={amazonContext.sectionTitle}
+                    sectionSubtitle={amazonContext.sectionSubtitle}
+                    products={amazonContext.products}
+                  />
+
                   <AdBanner className="my-8" />
 
                   <div
@@ -807,7 +822,25 @@ export default async function ArticlePage({ params }: { params: Params }) {
                 </>
               )}
 
-              {!secondHalfContent && <YouMinoxSpotlight variant="article" />}
+              {!secondHalfContent && (
+                <>
+                  <YouMinoxSpotlight variant="article" />
+                  <AmazonAffiliateBox
+                    variant="inline"
+                    sectionTitle={amazonContext.sectionTitle}
+                    sectionSubtitle={amazonContext.sectionSubtitle}
+                    products={amazonContext.products}
+                  />
+                </>
+              )}
+
+              {/* Contextual 3-Product Amazon Comparison Showcase */}
+              <AmazonAffiliateBox
+                variant="showcase"
+                sectionTitle={amazonContext.sectionTitle}
+                sectionSubtitle={amazonContext.sectionSubtitle}
+                products={amazonContext.products}
+              />
 
               {/* You Minox Comparison Hub */}
               <section className="my-12 rounded-2xl border border-slate-200 bg-light-bg p-6 sm:p-8">
@@ -990,6 +1023,14 @@ export default async function ArticlePage({ params }: { params: Params }) {
               <div className="sticky top-28 space-y-8">
                 {/* Official You Minox Sidebar Card */}
                 <YouMinoxSpotlight variant="sidebar" />
+
+                {/* Sticky Sidebar Amazon Affiliate Box */}
+                <AmazonAffiliateBox
+                  variant="sidebar"
+                  sectionTitle={amazonContext.sectionTitle}
+                  sectionSubtitle={amazonContext.sectionSubtitle}
+                  products={amazonContext.products}
+                />
 
                 {/* Related Articles Box (Exact Dinamica.pe style) */}
                 {relatedPosts.length > 0 && (
